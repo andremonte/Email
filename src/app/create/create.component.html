@@ -1,0 +1,57 @@
+<h2 style="color:#3f51b5;"class="pt-3 pr-3 pl-3 pb-2 mb-0">Create</h2>
+<hr class="p-1 m-0">
+<mat-card>
+<div class="container p-1">
+
+  <form class="p-2" (submit)="onAddEmail(postForm)" #postForm="ngForm">
+
+    <div class="form-group row">
+      <label class="col-form-label">Email to: </label>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-5 col-xl-5">
+          <input class="form-control" type="email" name="toInput" #toErr="ngModel" ngModel placeholder="name@example.com" required>
+          <small class="form-text text-muted" *ngIf="toErr.invalid"> You must provide an email.</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-form-label">Subject: </label>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-5 col-xl-5">
+          <input class="form-control" type="text" name="subjectInput" ngModel placeholder="Meeting - Jan 4th, 2019">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label>Message </label><br>
+      <textarea name="contentInput" #messageErr="ngModel" ngModel class="form-control" rows="10"></textarea>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-11 text-right pr-5">
+        <button type="submit" mat-raised-button color="primary" data-toggle="modal" data-target="#exampleModal">Send Email</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+</mat-card>
+<span *ngIf="sent">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">SUCCESS!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h2>Your Email was send successfully!</h2>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</span>

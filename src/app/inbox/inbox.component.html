@@ -1,0 +1,27 @@
+<h2 style="color:#3f51b5;"class="p-3">inbox</h2>
+
+  <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <mat-accordion multi="true">
+                <mat-expansion-panel *ngFor="let email of emails">
+                  <mat-expansion-panel-header *ngIf="!email.enviada && !email.archive">
+                    <mat-panel-title>
+                     <h6 style="font-weight:normal;" class="text-uppercase mr-1">FROM: </h6>
+                     <strong> {{ email.from }}</strong>
+                    </mat-panel-title>
+                    <mat-panel-title>
+                      <span class="text-uppercase">{{ email.subject }}</span>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <strong>CONTENT:</strong><br>
+                  <p class="pt-2 pl-2">{{ email.content }}</p>
+                  <button class="mr-2" mat-stroked-button color="primary" (click)="archiveEmail(email.id)">Archive</button>
+                  <button class="mr-2" mat-raised-button color="warn" (click)="deleteEmail(email.id)">delete</button>
+
+                </mat-expansion-panel>
+              </mat-accordion>
+              <p *ngIf="emails.length == 0" class="text-center mat-body-1">There is no emails!</p>
+        </div>
+      </div>
+    </div>
